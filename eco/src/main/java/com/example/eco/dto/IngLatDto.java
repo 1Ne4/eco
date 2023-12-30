@@ -1,14 +1,17 @@
 package com.example.eco.dto;
 
-import lombok.Value;
+import lombok.*;
 
 import java.io.Serializable;
 
 /**
  * DTO for {@link com.example.eco.entities.IngLat}
  */
-@Value
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class IngLatDto implements Serializable {
-    Double cord1;
-    Double cord2;
+    private Long id;
+    private Double cord1;
+    private Double cord2;
 }

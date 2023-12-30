@@ -2,20 +2,21 @@ package com.example.eco.dto;
 
 import com.example.eco.entities.Point;
 import jakarta.persistence.Transient;
-import lombok.Value;
+import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalTime;
 import java.util.List;
 
 /**
  * DTO for {@link Point}
  */
-@Value
+@Data
 public class PointDto implements Serializable {
-    IngLatDto ingLat;
+    private Long id;
+    private IngLatDto ingLat;
     @Transient
-    List<MaterialDto> type;
-    LocalTime openTime;
-    LocalTime closeTime;
+    private List<MaterialDto> type;
+    private String openTime;
+    private String closeTime;
+    private String title;
 }

@@ -7,11 +7,16 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface MaterialMapper {
     Material toEntity(MaterialDto materialDto);
 
     MaterialDto toDto(Material material);
+
+
+    List<MaterialDto> toDtos(List<Material> materials);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     Material partialUpdate(MaterialDto materialDto, @MappingTarget Material material);

@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -19,6 +18,7 @@ public class Point {
     private IngLat ingLat;
     @ManyToMany
     private List<Material> type;
-    LocalTime openTime;
-    LocalTime closeTime;
+    private String openTime;
+    private String closeTime;
+    private String title;
 }
