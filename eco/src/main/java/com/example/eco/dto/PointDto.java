@@ -1,7 +1,7 @@
 package com.example.eco.dto;
 
 import com.example.eco.entities.Point;
-import jakarta.persistence.Transient;
+import jakarta.persistence.ElementCollection;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -14,9 +14,10 @@ import java.util.List;
 public class PointDto implements Serializable {
     private Long id;
     private IngLatDto ingLat;
-    @Transient
-    private List<MaterialDto> type;
+    @ElementCollection
+    private List<String> type;
     private String openTime;
     private String closeTime;
     private String title;
+    private String address;
 }

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = {"https://greenlink-368f3.web.app", "localhost:4200", "http://eko-ekb-front.website.yandexcloud.net"})
+@CrossOrigin(origins = {"https://greenlink-368f3.web.app", "http://localhost:4200", "http://eko-ekb-front.website.yandexcloud.net","*"})
 @RequestMapping("/material")
 public class MaterialController {
     private final MaterialRepository materialRepository;

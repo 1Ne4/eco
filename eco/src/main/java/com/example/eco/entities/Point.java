@@ -13,12 +13,13 @@ public class Point {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ing_lat_id")
     private IngLat ingLat;
-    @ManyToMany
-    private List<Material> type;
+    @ElementCollection
+    private List<String> type;
     private String openTime;
     private String closeTime;
     private String title;
+    private String address;
 }
