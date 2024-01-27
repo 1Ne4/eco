@@ -5,8 +5,6 @@ import com.example.eco.entities.Account;
 import com.example.eco.entities.Role;
 import com.example.eco.repositories.AccountRepository;
 import com.example.eco.repositories.RoleRepository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +13,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,8 +63,8 @@ public class AccountService implements UserDetailsService {
         Account account = new Account();
         account.setUsername(accountDto.getUsername());
         account.setPassword(bCryptPasswordEncoder.encode(accountDto.getPassword()));
-        var role=roleRepository.findByName("ROLE_USER");
-        if(role.isEmpty()){
+        Optional<Role> role=roleRepository.findByName("ROLE_USER");
+        if(role.isPresent()){
             role = Optional.of(checkRoleExist());
         }
         account.addRole(role.get());
@@ -72,7 +72,7 @@ public class AccountService implements UserDetailsService {
     }
 
     public Account dtoToUser(AccountDto dto){
-        var user=new Account();
+        Account user=new Account();
         user.setUsername(dto.getUsername());
         user.setPassword(dto.getPassword());
         return user;

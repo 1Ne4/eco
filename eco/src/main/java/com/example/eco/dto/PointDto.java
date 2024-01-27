@@ -1,7 +1,7 @@
 package com.example.eco.dto;
 
 import com.example.eco.entities.Point;
-import jakarta.persistence.ElementCollection;
+import javax.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;

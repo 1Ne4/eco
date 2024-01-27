@@ -5,10 +5,7 @@ import com.example.eco.dto.AccountDto;
 import com.example.eco.entities.Account;
 import com.example.eco.services.AccountService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,15 +17,16 @@ public class AuthController {
         this.accountService = accountService;
     }
 
-    @PostMapping("/successLogin")
-    public String login(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return authentication.getName();
-    }
 
     @PostMapping("/register")
     public ResponseEntity<Void> registration(AccountDto accountDto) {
         accountService.saveUser(accountDto);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/user")
+    public String getUserName() {
+        Account account = accountService.findUserByName(SecurityContextHolder.getContext().getAuthentication().getName());
+        return account.getUsername();
     }
 }

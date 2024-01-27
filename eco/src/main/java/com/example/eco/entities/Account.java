@@ -1,12 +1,12 @@
 package com.example.eco.entities;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -26,7 +26,7 @@ public class Account implements UserDetails {
     private String password;
     @Transient
     private String passwordConfirm;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany( fetch = FetchType.EAGER)
     private List<Role> roles=new ArrayList<>();
 
     public void addRole(Role role) {
